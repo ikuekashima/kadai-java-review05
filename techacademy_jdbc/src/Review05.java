@@ -33,10 +33,10 @@ public class Review05 {
 
             // 5, 6. Select文の実行と結果を格納／代入
             System.out.print("検索キーワードを入力してください > ");
-            String input = keyIn();
+            Object input = keyIn();
 
             // PreparedStatementオブジェクトの?に値をセット  // ← 追記
-            pstmt.setString(1, input);  // ← 追記
+            pstmt.setString(1, (String) input);  // ← 追記
 
             rs = pstmt.executeQuery();  // ← 修正
 
@@ -87,11 +87,9 @@ public class Review05 {
         }
     }
 
-    /*
-     * キーボードから入力された値をStringで返す 引数：なし 戻り値：入力された文字列
-     */
-    private static String keyIn() {
-        String line = null;
+
+    private static Object keyIn() {
+        Object line = null;
         try {
             BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
             line = key.readLine();
