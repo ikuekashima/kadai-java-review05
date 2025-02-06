@@ -12,6 +12,9 @@ import java.sql.SQLException;
 
 public class Review05 {
 
+    private static final String Int = null;
+
+
     public static void main(String[] args) {
         // 3. データベース接続と結果取得のための変数宣言
         Connection con = null;
@@ -43,9 +46,9 @@ public class Review05 {
 
             // 7. 結果を表示する
             while (rs.next()) {
-                // Name列の値を取得
+
                 int id = rs.getInt("id");
-                // Population列の値を取得 ← 追記
+
                 String Name = rs.getString("Name");
                 int age = rs.getInt("age");
                 // 取得した値を表示
@@ -89,8 +92,9 @@ public class Review05 {
     }
 
 
-    private static Object keyIn() {
-        Object line = null;
+    private static String keyIn() {
+        String line = null;
+
         try {
             BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
             line = key.readLine();
@@ -99,5 +103,16 @@ public class Review05 {
         }
         return line;
     }
+    private static int keyInNum() {
+        int result = 0;
 
+
+        try {
+            BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
+            result = Integer.parseInt(keyIn());
+        } catch (NumberFormatException e) {
+
+        }
+        return result;
+    }
 }
